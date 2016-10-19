@@ -31,7 +31,7 @@ should be replaced by
 ];
 ```
 
-To publish the config file to app/config/stubs.php run:
+To publish the config file to `config/stubs.php` run:
 
 ```
 php artisan vendor:publish --provider=ATehnix\LaravelStubs\Providers\ConsoleSupportServiceProvider
@@ -41,6 +41,9 @@ Done!
 
 
 ## Usage
+
+### Configure paths for generated classes
+To change the paths of saving the generated classes, you need to configure their namespaces in a configuration file `config/stubs.php`.
 
 ### Publish stub files for edit
 ```
