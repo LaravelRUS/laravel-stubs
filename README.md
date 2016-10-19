@@ -1,4 +1,4 @@
-# Override Laravel stubs
+# Customize laravel make command
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Packagist Version](https://img.shields.io/packagist/v/atehnix/laravel-stubs.svg)](https://packagist.org/packages/atehnix/laravel-stubs)
 

@@ -1,6 +1,6 @@
 {
     "name": "atehnix/laravel-stubs",
-    "description": "Override default stubs",
+    "description": "Customize laravel make command.",
     "keywords": [
         "laravel",
         "stub",
