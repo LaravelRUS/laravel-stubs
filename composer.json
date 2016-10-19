@@ -1,0 +1,22 @@
+{
+    "name": "atehnix/laravel-stubs",
+    "description": "Override default stubs",
+    "keywords": [
+        "laravel",
+        "stub",
+        "make",
+        "generator"
+    ],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Andrey Sosnov",
+            "email": "atehnix@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.6.4",
+        "laravel/framework": "5.3.*"
+    }
+}
