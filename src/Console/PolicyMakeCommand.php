@@ -37,6 +37,6 @@ class PolicyMakeCommand extends BasePolicyMakeCommand
      */
     protected function getDefaultNamespace($rootNamespace)
     {
-        return $rootNamespace.config('stubs.namespaces.console');
+        return $rootNamespace.config('stubs.namespaces.policy');
     }
 }
