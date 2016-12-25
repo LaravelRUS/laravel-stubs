@@ -18,9 +18,12 @@ class ControllerMakeCommand extends BaseControllerMakeCommand
      *
      * @return string
      */
+    
     protected function getStub()
     {
-        if ($this->option('resource')) {
+        if ($this->option('model')) {
+            $stub = config('stubs.path').'/controller.model.stub';
+        } elseif ($this->option('resource')) {
             $stub = config('stubs.path').'/controller.stub';
         } else {
             $stub = config('stubs.path').'/controller.plain.stub';
