@@ -106,7 +106,7 @@ class StubsPublishCommand extends Command
      */
     protected function publishFile($from, $to)
     {
-        if ($this->files->exists($to)) {
+        if ($this->files->exists($to) || !$this->files->exists($from)) {
             return;
         }
 
