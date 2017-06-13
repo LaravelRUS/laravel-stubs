@@ -9,6 +9,8 @@
  */
 namespace ATehnix\LaravelStubs\Providers;
 
+use Illuminate\Database\MigrationServiceProvider;
+use Illuminate\Foundation\Providers\ComposerServiceProvider;
 use Illuminate\Foundation\Providers\ConsoleSupportServiceProvider as BaseServiceProvider;
 
 class ConsoleSupportServiceProvider extends BaseServiceProvider
@@ -19,9 +21,9 @@ class ConsoleSupportServiceProvider extends BaseServiceProvider
      * @var array
      */
     protected $providers = [
-        'ATehnix\LaravelStubs\Providers\ArtisanServiceProvider',
-        'Illuminate\Database\MigrationServiceProvider',
-        'Illuminate\Foundation\Providers\ComposerServiceProvider',
+        ArtisanServiceProvider::class,
+        MigrationServiceProvider::class,
+        ComposerServiceProvider::class,
     ];
 
     /**
