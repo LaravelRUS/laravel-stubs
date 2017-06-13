@@ -20,11 +20,8 @@ class ConsoleSupportServiceProvider extends BaseServiceProvider
      */
     protected $providers = [
         'ATehnix\LaravelStubs\Providers\ArtisanServiceProvider',
-        'Illuminate\Console\ScheduleServiceProvider',
         'Illuminate\Database\MigrationServiceProvider',
-        'Illuminate\Database\SeedServiceProvider',
         'Illuminate\Foundation\Providers\ComposerServiceProvider',
-        'Illuminate\Queue\ConsoleServiceProvider',
     ];
 
     /**
@@ -55,6 +52,6 @@ class ConsoleSupportServiceProvider extends BaseServiceProvider
     {
         $this->publishes([
             $this->configPath => config_path('stubs.php'),
-        ]);
+        ], 'config');
     }
 }
