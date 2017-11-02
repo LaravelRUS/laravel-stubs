@@ -20,7 +20,11 @@ class MailMakeCommand extends BaseMailMakeCommand
      */
     protected function getStub()
     {
-        $stub = config('stubs.path').'/mail.stub';
+        if ($this->option('markdown')) {
+            $stub = config('stubs.path').'/markdown-mail.stub';
+        } else {
+            $stub = config('stubs.path').'/mail.stub';
+        }
 
         return file_exists($stub) ? $stub : parent::getStub();
     }

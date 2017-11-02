@@ -20,7 +20,11 @@ class NotificationMakeCommand extends BaseNotificationMakeCommand
      */
     protected function getStub()
     {
-        $stub = config('stubs.path').'/notification.stub';
+        if ($this->option('markdown')) {
+            $stub = config('stubs.path').'/markdown-notification.stub';
+        } else {
+            $stub = config('stubs.path').'/notification.stub';
+        }
 
         return file_exists($stub) ? $stub : parent::getStub();
     }

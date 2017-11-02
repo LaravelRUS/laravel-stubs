@@ -20,7 +20,11 @@ class TestMakeCommand extends BaseTestMakeCommand
      */
     protected function getStub()
     {
-        $stub = config('stubs.path').'/test.stub';
+        if ($this->option('unit')) {
+            $stub = config('stubs.path').'/unit-test.stub';
+        } else {
+            $stub = config('stubs.path').'/test.stub';
+        }
 
         return file_exists($stub) ? $stub : parent::getStub();
     }
