@@ -7,9 +7,28 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 namespace ATehnix\LaravelStubs\Providers;
 
-use ATehnix\LaravelStubs\Console;
+use ATehnix\LaravelStubs\Console\ConsoleMakeCommand;
+use ATehnix\LaravelStubs\Console\ControllerMakeCommand;
+use ATehnix\LaravelStubs\Console\EventMakeCommand;
+use ATehnix\LaravelStubs\Console\ExceptionMakeCommand;
+use ATehnix\LaravelStubs\Console\FactoryMakeCommand;
+use ATehnix\LaravelStubs\Console\JobMakeCommand;
+use ATehnix\LaravelStubs\Console\ListenerMakeCommand;
+use ATehnix\LaravelStubs\Console\MailMakeCommand;
+use ATehnix\LaravelStubs\Console\MiddlewareMakeCommand;
+use ATehnix\LaravelStubs\Console\ModelMakeCommand;
+use ATehnix\LaravelStubs\Console\NotificationMakeCommand;
+use ATehnix\LaravelStubs\Console\PolicyMakeCommand;
+use ATehnix\LaravelStubs\Console\ProviderMakeCommand;
+use ATehnix\LaravelStubs\Console\RequestMakeCommand;
+use ATehnix\LaravelStubs\Console\ResourceMakeCommand;
+use ATehnix\LaravelStubs\Console\RuleMakeCommand;
+use ATehnix\LaravelStubs\Console\SeederMakeCommand;
+use ATehnix\LaravelStubs\Console\StubsPublishCommand;
+use ATehnix\LaravelStubs\Console\TestMakeCommand;
 use Illuminate\Foundation\Providers\ArtisanServiceProvider as BaseServiceProvider;
 
 class ArtisanServiceProvider extends BaseServiceProvider
@@ -21,7 +40,7 @@ class ArtisanServiceProvider extends BaseServiceProvider
      */
     public function boot()
     {
-        $this->commands(Console\StubsPublishCommand::class);
+        $this->commands(StubsPublishCommand::class);
     }
 
     /**
@@ -32,7 +51,7 @@ class ArtisanServiceProvider extends BaseServiceProvider
     protected function registerConsoleMakeCommand()
     {
         $this->app->singleton('command.console.make', function ($app) {
-            return new Console\ConsoleMakeCommand($app['files']);
+            return new ConsoleMakeCommand($app['files']);
         });
     }
 
@@ -44,7 +63,7 @@ class ArtisanServiceProvider extends BaseServiceProvider
     protected function registerControllerMakeCommand()
     {
         $this->app->singleton('command.controller.make', function ($app) {
-            return new Console\ControllerMakeCommand($app['files']);
+            return new ControllerMakeCommand($app['files']);
         });
     }
 
@@ -56,7 +75,31 @@ class ArtisanServiceProvider extends BaseServiceProvider
     protected function registerEventMakeCommand()
     {
         $this->app->singleton('command.event.make', function ($app) {
-            return new Console\EventMakeCommand($app['files']);
+            return new EventMakeCommand($app['files']);
+        });
+    }
+
+    /**
+     * Register the command.
+     *
+     * @return void
+     */
+    protected function registerExceptionMakeCommand()
+    {
+        $this->app->singleton('command.exception.make', function ($app) {
+            return new ExceptionMakeCommand($app['files']);
+        });
+    }
+
+    /**
+     * Register the command.
+     *
+     * @return void
+     */
+    protected function registerFactoryMakeCommand()
+    {
+        $this->app->singleton('command.factory.make', function ($app) {
+            return new FactoryMakeCommand($app['files']);
         });
     }
 
@@ -68,7 +111,7 @@ class ArtisanServiceProvider extends BaseServiceProvider
     protected function registerJobMakeCommand()
     {
         $this->app->singleton('command.job.make', function ($app) {
-            return new Console\JobMakeCommand($app['files']);
+            return new JobMakeCommand($app['files']);
         });
     }
 
@@ -80,7 +123,7 @@ class ArtisanServiceProvider extends BaseServiceProvider
     protected function registerListenerMakeCommand()
     {
         $this->app->singleton('command.listener.make', function ($app) {
-            return new Console\ListenerMakeCommand($app['files']);
+            return new ListenerMakeCommand($app['files']);
         });
     }
 
@@ -92,7 +135,7 @@ class ArtisanServiceProvider extends BaseServiceProvider
     protected function registerMailMakeCommand()
     {
         $this->app->singleton('command.mail.make', function ($app) {
-            return new Console\MailMakeCommand($app['files']);
+            return new MailMakeCommand($app['files']);
         });
     }
 
@@ -104,7 +147,7 @@ class ArtisanServiceProvider extends BaseServiceProvider
     protected function registerMiddlewareMakeCommand()
     {
         $this->app->singleton('command.middleware.make', function ($app) {
-            return new Console\MiddlewareMakeCommand($app['files']);
+            return new MiddlewareMakeCommand($app['files']);
         });
     }
 
@@ -116,7 +159,7 @@ class ArtisanServiceProvider extends BaseServiceProvider
     protected function registerModelMakeCommand()
     {
         $this->app->singleton('command.model.make', function ($app) {
-            return new Console\ModelMakeCommand($app['files']);
+            return new ModelMakeCommand($app['files']);
         });
     }
 
@@ -128,7 +171,7 @@ class ArtisanServiceProvider extends BaseServiceProvider
     protected function registerNotificationMakeCommand()
     {
         $this->app->singleton('command.notification.make', function ($app) {
-            return new Console\NotificationMakeCommand($app['files']);
+            return new NotificationMakeCommand($app['files']);
         });
     }
 
@@ -140,7 +183,7 @@ class ArtisanServiceProvider extends BaseServiceProvider
     protected function registerProviderMakeCommand()
     {
         $this->app->singleton('command.provider.make', function ($app) {
-            return new Console\ProviderMakeCommand($app['files']);
+            return new ProviderMakeCommand($app['files']);
         });
     }
 
@@ -152,7 +195,31 @@ class ArtisanServiceProvider extends BaseServiceProvider
     protected function registerRequestMakeCommand()
     {
         $this->app->singleton('command.request.make', function ($app) {
-            return new Console\RequestMakeCommand($app['files']);
+            return new RequestMakeCommand($app['files']);
+        });
+    }
+
+    /**
+     * Register the command.
+     *
+     * @return void
+     */
+    protected function registerResourceMakeCommand()
+    {
+        $this->app->singleton('command.resource.make', function ($app) {
+            return new ResourceMakeCommand($app['files']);
+        });
+    }
+
+    /**
+     * Register the command.
+     *
+     * @return void
+     */
+    protected function registerRuleMakeCommand()
+    {
+        $this->app->singleton('command.rule.make', function ($app) {
+            return new RuleMakeCommand($app['files']);
         });
     }
 
@@ -164,7 +231,7 @@ class ArtisanServiceProvider extends BaseServiceProvider
     protected function registerSeederMakeCommand()
     {
         $this->app->singleton('command.seeder.make', function ($app) {
-            return new Console\SeederMakeCommand($app['files'], $app['composer']);
+            return new SeederMakeCommand($app['files'], $app['composer']);
         });
     }
 
@@ -176,7 +243,7 @@ class ArtisanServiceProvider extends BaseServiceProvider
     protected function registerTestMakeCommand()
     {
         $this->app->singleton('command.test.make', function ($app) {
-            return new Console\TestMakeCommand($app['files']);
+            return new TestMakeCommand($app['files']);
         });
     }
 
@@ -188,7 +255,7 @@ class ArtisanServiceProvider extends BaseServiceProvider
     protected function registerPolicyMakeCommand()
     {
         $this->app->singleton('command.policy.make', function ($app) {
-            return new Console\PolicyMakeCommand($app['files']);
+            return new PolicyMakeCommand($app['files']);
         });
     }
 }

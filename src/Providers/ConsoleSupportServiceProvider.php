@@ -7,6 +7,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 namespace ATehnix\LaravelStubs\Providers;
 
 use Illuminate\Database\MigrationServiceProvider;
@@ -31,7 +32,7 @@ class ConsoleSupportServiceProvider extends BaseServiceProvider
      *
      * @var string
      */
-    protected $configPath = __DIR__.'/../../publish/config/stubs.php';
+    protected $configPath = __DIR__ . '/../../publish/config/stubs.php';
 
     /**
      * Register the service provider.
