@@ -6,29 +6,14 @@ The package gives you the opportunity to customize Artisan commands like `artisa
 
 Any location of the generated classes and with any content.
 
-## Installation
+
+## Installation for Laravel 5.5
+> *For older laravel versions see: [older instllation](https://github.com/atehnix/laravel-stubs/tree/v2.0.0#installation)*
 
 You can get library through [composer](https://getcomposer.org/)
 
 ```
 composer require atehnix/laravel-stubs
-```
-
-Next up, the service provider 
-`Illuminate\Foundation\Providers\ConsoleSupportServiceProvider::class,` 
-
-should be replaced by
-`ATehnix\LaravelStubs\Providers\ConsoleSupportServiceProvider::class,`
-
-```php
-// config/app.php
-
-'providers' => [
-    ...
-    // Illuminate\Foundation\Providers\ConsoleSupportServiceProvider::class,
-    ATehnix\LaravelStubs\Providers\ConsoleSupportServiceProvider::class,
-    ...
-];
 ```
 
 To publish the config file to `config/stubs.php` run:
