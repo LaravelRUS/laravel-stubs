@@ -1,6 +1,6 @@
 # Customize laravel make command
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Packagist Version](https://img.shields.io/packagist/v/atehnix/laravel-stubs.svg)](https://packagist.org/packages/atehnix/laravel-stubs)
+[![Packagist Version](https://img.shields.io/packagist/v/atehnix/laravel-stubs.svg?maxAge=0)](https://packagist.org/packages/atehnix/laravel-stubs)
 
 The package gives you the opportunity to customize Artisan commands like `artisan make:model`, `artisan make:controller` and other, just as you need. 
 
