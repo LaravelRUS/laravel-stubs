@@ -7,6 +7,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 namespace ATehnix\LaravelStubs\Console;
 
 use Illuminate\Routing\Console\MiddlewareMakeCommand as BaseMiddlewareMakeCommand;
@@ -20,7 +21,7 @@ class MiddlewareMakeCommand extends BaseMiddlewareMakeCommand
      */
     protected function getStub()
     {
-        $stub = config('stubs.path').'/middleware.stub';
+        $stub = config('stubs.path') . '/middleware.stub';
 
         return file_exists($stub) ? $stub : parent::getStub();
     }
@@ -28,11 +29,11 @@ class MiddlewareMakeCommand extends BaseMiddlewareMakeCommand
     /**
      * Get the default namespace for the class.
      *
-     * @param  string  $rootNamespace
+     * @param  string $rootNamespace
      * @return string
      */
     protected function getDefaultNamespace($rootNamespace)
     {
-        return $rootNamespace.config('stubs.namespaces.middleware');
+        return $rootNamespace . config('stubs.namespaces.middleware');
     }
 }

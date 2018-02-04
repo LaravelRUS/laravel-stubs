@@ -7,6 +7,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 namespace ATehnix\LaravelStubs\Console;
 
 use Illuminate\Foundation\Console\JobMakeCommand as BaseJobMakeCommand;
@@ -21,9 +22,9 @@ class JobMakeCommand extends BaseJobMakeCommand
     protected function getStub()
     {
         if ($this->option('sync')) {
-            $stub = config('stubs.path').'/job.stub';
+            $stub = config('stubs.path') . '/job.stub';
         } else {
-            $stub = config('stubs.path').'/job-queued.stub';
+            $stub = config('stubs.path') . '/job-queued.stub';
         }
 
         return file_exists($stub) ? $stub : parent::getStub();
@@ -32,11 +33,11 @@ class JobMakeCommand extends BaseJobMakeCommand
     /**
      * Get the default namespace for the class.
      *
-     * @param  string  $rootNamespace
+     * @param  string $rootNamespace
      * @return string
      */
     protected function getDefaultNamespace($rootNamespace)
     {
-        return $rootNamespace.config('stubs.namespaces.job');
+        return $rootNamespace . config('stubs.namespaces.job');
     }
 }
