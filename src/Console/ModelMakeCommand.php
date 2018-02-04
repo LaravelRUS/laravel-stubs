@@ -7,6 +7,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 namespace ATehnix\LaravelStubs\Console;
 
 use Illuminate\Foundation\Console\ModelMakeCommand as BaseModelMakeCommand;
@@ -20,7 +21,11 @@ class ModelMakeCommand extends BaseModelMakeCommand
      */
     protected function getStub()
     {
-        $stub = config('stubs.path').'/model.stub';
+        if ($this->option('pivot')) {
+            $stub = config('stubs.path') . '/pivot.model.stub';
+        } else {
+            $stub = config('stubs.path') . '/model.stub';
+        }
 
         return file_exists($stub) ? $stub : parent::getStub();
     }
@@ -28,11 +33,11 @@ class ModelMakeCommand extends BaseModelMakeCommand
     /**
      * Get the default namespace for the class.
      *
-     * @param  string  $rootNamespace
+     * @param  string $rootNamespace
      * @return string
      */
     protected function getDefaultNamespace($rootNamespace)
     {
-        return $rootNamespace.config('stubs.namespaces.model');
+        return $rootNamespace . config('stubs.namespaces.model');
     }
 }
