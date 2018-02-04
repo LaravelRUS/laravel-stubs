@@ -13,12 +13,13 @@ return [
     |--------------------------------------------------------------------------
     | Default namespaces for the classes
     |--------------------------------------------------------------------------
-    | Root application namespaсe (like "App") should be skipped.
+    | Warning! Root application namespaсe (like "App") should be skipped.
     */
     'namespaces' => [
-        'console'      => '\Console\Commands',
+        'command'      => '\Console\Commands',
         'controller'   => '\Http\Controllers',
         'event'        => '\Events',
+        'exception'    => '\Exceptions',
         'job'          => '\Jobs',
         'listener'     => '\Listeners',
         'mail'         => '\Mail',
@@ -28,6 +29,8 @@ return [
         'policy'       => '\Policies',
         'provider'     => '\Providers',
         'request'      => '\Http\Requests',
+        'resource'     => '\Http\Resources',
+        'rule'         => '\Rules',
     ],
 
 ];
