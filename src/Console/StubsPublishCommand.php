@@ -7,6 +7,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 namespace ATehnix\LaravelStubs\Console;
 
 use Illuminate\Console\Command;
@@ -48,15 +49,23 @@ class StubsPublishCommand extends Command
      * @var array
      */
     protected $stubs = [
+        'Illuminate/Database/Console/Factories/stubs/factory.stub',
         'Illuminate/Database/Console/Seeds/stubs/seeder.stub',
         'Illuminate/Foundation/Console/stubs/console.stub',
         'Illuminate/Foundation/Console/stubs/event.stub',
+        'Illuminate/Foundation/Console/stubs/exception-render-report.stub',
+        'Illuminate/Foundation/Console/stubs/exception-render.stub',
+        'Illuminate/Foundation/Console/stubs/exception-report.stub',
+        'Illuminate/Foundation/Console/stubs/exception.stub',
         'Illuminate/Foundation/Console/stubs/job.stub',
         'Illuminate/Foundation/Console/stubs/job-queued.stub',
-        'Illuminate/Foundation/Console/stubs/listener.stub',
+        'Illuminate/Foundation/Console/stubs/listener-duck.stub',
+        'Illuminate/Foundation/Console/stubs/listener-queued-duck.stub',
         'Illuminate/Foundation/Console/stubs/listener-queued.stub',
+        'Illuminate/Foundation/Console/stubs/listener.stub',
         'Illuminate/Foundation/Console/stubs/mail.stub',
         'Illuminate/Foundation/Console/stubs/markdown-mail.stub',
+        'Illuminate/Foundation/Console/stubs/pivot.model.stub',
         'Illuminate/Foundation/Console/stubs/model.stub',
         'Illuminate/Foundation/Console/stubs/notification.stub',
         'Illuminate/Foundation/Console/stubs/markdown-notification.stub',
@@ -64,8 +73,12 @@ class StubsPublishCommand extends Command
         'Illuminate/Foundation/Console/stubs/policy.stub',
         'Illuminate/Foundation/Console/stubs/provider.stub',
         'Illuminate/Foundation/Console/stubs/request.stub',
+        'Illuminate/Foundation/Console/stubs/resource-collection.stub',
+        'Illuminate/Foundation/Console/stubs/resource.stub',
+        'Illuminate/Foundation/Console/stubs/rule.stub',
         'Illuminate/Foundation/Console/stubs/test.stub',
         'Illuminate/Foundation/Console/stubs/unit-test.stub',
+        'Illuminate/Routing/Console/stubs/controller.nested.stub',
         'Illuminate/Routing/Console/stubs/controller.plain.stub',
         'Illuminate/Routing/Console/stubs/controller.model.stub',
         'Illuminate/Routing/Console/stubs/controller.stub',
@@ -75,7 +88,7 @@ class StubsPublishCommand extends Command
     /**
      * Create a new command instance.
      *
-     * @param  \Illuminate\Filesystem\Filesystem  $files
+     * @param  \Illuminate\Filesystem\Filesystem $files
      */
     public function __construct(Filesystem $files)
     {
@@ -93,41 +106,48 @@ class StubsPublishCommand extends Command
     {
         $path = config('stubs.path');
         $this->createDirectory($path);
+        $publishedCount = 0;
 
         foreach ($this->stubs as $stub) {
-            $from = base_path($this->frameworkPath. $stub);
-            $to = $path . '/'. basename($stub);
-            $this->publishFile($from, $to);
+            $from = base_path($this->frameworkPath . $stub);
+            $to = $path . '/' . basename($stub);
+            $publishedCount += (int)$this->publishFile($from, $to);
+        }
+
+        if ($publishedCount === 0) {
+            $this->line('Nothing to publish');
+        }
+    }
+
+    /**
+     * Create the directory to house the published files if needed.
+     *
+     * @param  string $directory
+     * @return void
+     */
+    protected function createDirectory($directory)
+    {
+        if (!$this->files->isDirectory($directory)) {
+            $this->files->makeDirectory($directory, 0755, true);
         }
     }
 
     /**
      * Publish the file to the given path.
      *
-     * @param  string  $from
-     * @param  string  $to
-     * @return void
+     * @param  string $from
+     * @param  string $to
+     * @return bool
      */
     protected function publishFile($from, $to)
     {
         if ($this->files->exists($to) || !$this->files->exists($from)) {
-            return;
+            return false;
         }
 
         $this->files->copy($from, $to);
         $this->info('Stub published: ' . basename($to));
-    }
 
-    /**
-     * Create the directory to house the published files if needed.
-     *
-     * @param  string  $directory
-     * @return void
-     */
-    protected function createDirectory($directory)
-    {
-        if (! $this->files->isDirectory($directory)) {
-            $this->files->makeDirectory($directory, 0755, true);
-        }
+        return true;
     }
 }
