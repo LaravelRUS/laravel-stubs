@@ -16,6 +16,7 @@ return [
     | Warning! Root application namespaсe (like "App") should be skipped.
     */
     'namespaces' => [
+        'channel'      => '\Broadcasting',
         'command'      => '\Console\Commands',
         'controller'   => '\Http\Controllers',
         'event'        => '\Events',

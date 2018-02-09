@@ -7,7 +7,7 @@ The package gives you the opportunity to customize Artisan commands like `artisa
 Any location of the generated classes and with any content.
 
 
-## Installation for Laravel 5.5
+## Installation for Laravel 5.5 / 5.6
 > *For older laravel versions see: [older instllation](https://github.com/atehnix/laravel-stubs/tree/v2.0.0#installation)*
 
 You can get library through [composer](https://getcomposer.org/)
@@ -19,7 +19,7 @@ composer require atehnix/laravel-stubs
 To publish the config file to `config/stubs.php` run:
 
 ```
-php artisan vendor:publish --provider=ATehnix\LaravelStubs\Providers\ConsoleSupportServiceProvider
+php artisan vendor:publish --provider="ATehnix\LaravelStubs\Providers\ConsoleSupportServiceProvider"
 ```
 
 Done!

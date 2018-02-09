@@ -51,6 +51,7 @@ class StubsPublishCommand extends Command
     protected $stubs = [
         'Illuminate/Database/Console/Factories/stubs/factory.stub',
         'Illuminate/Database/Console/Seeds/stubs/seeder.stub',
+        'Illuminate/Foundation/Console/stubs/channel.stub',
         'Illuminate/Foundation/Console/stubs/console.stub',
         'Illuminate/Foundation/Console/stubs/event.stub',
         'Illuminate/Foundation/Console/stubs/exception-render-report.stub',
@@ -78,6 +79,7 @@ class StubsPublishCommand extends Command
         'Illuminate/Foundation/Console/stubs/rule.stub',
         'Illuminate/Foundation/Console/stubs/test.stub',
         'Illuminate/Foundation/Console/stubs/unit-test.stub',
+        'Illuminate/Routing/Console/stubs/controller.api.stub',
         'Illuminate/Routing/Console/stubs/controller.nested.stub',
         'Illuminate/Routing/Console/stubs/controller.plain.stub',
         'Illuminate/Routing/Console/stubs/controller.model.stub',

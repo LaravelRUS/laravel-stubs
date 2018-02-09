@@ -10,6 +10,7 @@
 
 namespace ATehnix\LaravelStubs\Providers;
 
+use ATehnix\LaravelStubs\Console\ChannelMakeCommand;
 use ATehnix\LaravelStubs\Console\ConsoleMakeCommand;
 use ATehnix\LaravelStubs\Console\ControllerMakeCommand;
 use ATehnix\LaravelStubs\Console\EventMakeCommand;
@@ -41,6 +42,18 @@ class ArtisanServiceProvider extends BaseServiceProvider
     public function boot()
     {
         $this->commands(StubsPublishCommand::class);
+    }
+
+    /**
+     * Register the command.
+     *
+     * @return void
+     */
+    protected function registerChannelMakeCommand()
+    {
+        $this->app->singleton('command.channel.make', function ($app) {
+            return new ChannelMakeCommand($app['files']);
+        });
     }
 
     /**
