@@ -30,15 +30,23 @@ class ControllerMakeCommand extends BaseControllerMakeCommand
      */
     protected function getStub()
     {
+        $stub = null;
+
         if ($this->option('parent')) {
             $stub = config('stubs.path') . '/controller.nested.stub';
         } elseif ($this->option('model')) {
             $stub = config('stubs.path') . '/controller.model.stub';
         } elseif ($this->option('resource')) {
             $stub = config('stubs.path') . '/controller.stub';
-        } else {
-            $stub = config('stubs.path') . '/controller.plain.stub';
         }
+
+        if ($this->option('api') && is_null($stub)) {
+            $stub = config('stubs.path') . '/controller.api.stub';
+        } elseif ($this->option('api') && !is_null($stub)) {
+            $stub = config('stubs.path') . str_replace('.stub', '.api.stub', $stub);
+        }
+
+        $stub = $stub ?? config('stubs.path') . '/controller.plain.stub';
 
         return file_exists($stub) ? $stub : parent::getStub();
     }
