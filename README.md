@@ -8,7 +8,7 @@ Any location of the generated classes and with any content.
 
 
 ## Installation for Laravel 5.5 / 5.6
-> *For older laravel versions see: [older instllation](https://github.com/atehnix/laravel-stubs/tree/v2.0.0#installation)*
+> *For older laravel versions see: [older installation](https://github.com/atehnix/laravel-stubs/tree/v2.0.0#installation)*
 
 You can get library through [composer](https://getcomposer.org/)
 
