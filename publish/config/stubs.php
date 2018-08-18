@@ -25,7 +25,7 @@ return [
         'listener'     => '\Listeners',
         'mail'         => '\Mail',
         'middleware'   => '\Http\Middleware',
-        'model'        => '\Models',
+        'model'        => '',
         'notification' => '\Notifications',
         'policy'       => '\Policies',
         'provider'     => '\Providers',
