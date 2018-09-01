@@ -51,8 +51,16 @@ class FactoryMakeCommand extends BaseFactoryMakeCommand
      */
     protected function parseModel($model)
     {
+        if (preg_match('([^A-Za-z0-9_/\\\\])', $model)) {
+            throw new InvalidArgumentException('Model name contains invalid characters.');
+        }
+
         $model = trim(str_replace('/', '\\', $model), '\\');
-        $namespace = $this->laravel->getNamespace() . \trim(config('stubs.namespaces.model'), '\\') . '\\';
+        $namespace = $this->laravel->getNamespace();
+
+        if (trim(config('stubs.namespaces.model'), '\\') != '') {
+            $namespace .= trim(config('stubs.namespaces.model'), '\\') . '\\';
+        }
 
         if (!Str::startsWith($model, $namespace)) {
             $model = $namespace . $model;
