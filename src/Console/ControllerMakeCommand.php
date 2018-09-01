@@ -75,7 +75,11 @@ class ControllerMakeCommand extends BaseControllerMakeCommand
         }
 
         $model = trim(str_replace('/', '\\', $model), '\\');
-        $namespace = $this->laravel->getNamespace() . \trim(config('stubs.namespaces.model'), '\\') . '\\';
+        $namespace = $this->laravel->getNamespace();
+
+        if (trim(config('stubs.namespaces.model'), '\\') != '') {
+            $namespace .= trim(config('stubs.namespaces.model'), '\\') . '\\';
+        }
 
         if (!Str::startsWith($model, $namespace)) {
             $model = $namespace . $model;
