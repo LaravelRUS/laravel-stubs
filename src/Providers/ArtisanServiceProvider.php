@@ -20,6 +20,7 @@ use ATehnix\LaravelStubs\Console\JobMakeCommand;
 use ATehnix\LaravelStubs\Console\ListenerMakeCommand;
 use ATehnix\LaravelStubs\Console\MailMakeCommand;
 use ATehnix\LaravelStubs\Console\MiddlewareMakeCommand;
+use ATehnix\LaravelStubs\Console\MigrationCreator;
 use ATehnix\LaravelStubs\Console\ModelMakeCommand;
 use ATehnix\LaravelStubs\Console\NotificationMakeCommand;
 use ATehnix\LaravelStubs\Console\PolicyMakeCommand;
@@ -30,6 +31,7 @@ use ATehnix\LaravelStubs\Console\RuleMakeCommand;
 use ATehnix\LaravelStubs\Console\SeederMakeCommand;
 use ATehnix\LaravelStubs\Console\StubsPublishCommand;
 use ATehnix\LaravelStubs\Console\TestMakeCommand;
+use Illuminate\Database\Console\Migrations\MigrateMakeCommand;
 use Illuminate\Foundation\Providers\ArtisanServiceProvider as BaseServiceProvider;
 
 class ArtisanServiceProvider extends BaseServiceProvider
@@ -269,6 +271,21 @@ class ArtisanServiceProvider extends BaseServiceProvider
     {
         $this->app->singleton('command.policy.make', function ($app) {
             return new PolicyMakeCommand($app['files']);
+        });
+    }
+
+    /**
+     * Register the command.
+     *
+     * @return void
+     */
+    protected function registerMigrateMakeCommand()
+    {
+        $this->app->singleton('command.migrate.make', function ($app) {
+            $creator  = app()->make(MigrationCreator::class);
+            $composer = $app['composer'];
+
+            return new MigrateMakeCommand($creator, $composer);
         });
     }
 }
