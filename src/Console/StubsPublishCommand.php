@@ -117,14 +117,8 @@ class StubsPublishCommand extends Command
         $publishedCount = 0;
 
         foreach ($this->stubs as $stub) {
-            $from           = base_path($this->frameworkPath . $stub);
-            $to             = $path . '/' . basename($stub);
-            $publishedCount += (int)$this->publishFile($from, $to);
-        }
-
-        foreach ($this->migrationStubs as $stub => $name) {
-            $from           = base_path($this->frameworkPath . $stub);
-            $to             = $path . '/' . $name;
+            $from = base_path($this->frameworkPath . $stub);
+            $to = $path . '/' . basename($stub);
             $publishedCount += (int)$this->publishFile($from, $to);
         }
 
