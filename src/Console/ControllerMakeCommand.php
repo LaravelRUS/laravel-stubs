@@ -36,13 +36,15 @@ class ControllerMakeCommand extends BaseControllerMakeCommand
             $stub = config('stubs.path') . '/controller.nested.stub';
         } elseif ($this->option('model')) {
             $stub = config('stubs.path') . '/controller.model.stub';
+        } elseif ($this->option('invokable')) {
+            $stub = config('stubs.path') . '/controller.invokable.stub';
         } elseif ($this->option('resource')) {
             $stub = config('stubs.path') . '/controller.stub';
         }
 
         if ($this->option('api') && is_null($stub)) {
             $stub = config('stubs.path') . '/controller.api.stub';
-        } elseif ($this->option('api') && !is_null($stub)) {
+        } elseif ($this->option('api') && !is_null($stub) && !$this->option('invokable')) {
             $stub = config('stubs.path') . str_replace('.stub', '.api.stub', $stub);
         }
 
@@ -75,7 +77,7 @@ class ControllerMakeCommand extends BaseControllerMakeCommand
         }
 
         $model = trim(str_replace('/', '\\', $model), '\\');
-        $namespace = $this->laravel->getNamespace() . \trim(config('stubs.namespaces.model'), '\\') . '\\';
+        $namespace = $this->laravel->getNamespace() . ltrim(config('stubs.namespaces.model') . '\\', '\\');
 
         if (!Str::startsWith($model, $namespace)) {
             $model = $namespace . $model;

@@ -80,6 +80,7 @@ class StubsPublishCommand extends Command
         'Illuminate/Foundation/Console/stubs/test.stub',
         'Illuminate/Foundation/Console/stubs/unit-test.stub',
         'Illuminate/Routing/Console/stubs/controller.api.stub',
+        'Illuminate/Routing/Console/stubs/controller.invokable.stub',
         'Illuminate/Routing/Console/stubs/controller.nested.stub',
         'Illuminate/Routing/Console/stubs/controller.plain.stub',
         'Illuminate/Routing/Console/stubs/controller.model.stub',
