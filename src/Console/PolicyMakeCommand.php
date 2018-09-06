@@ -60,8 +60,8 @@ class PolicyMakeCommand extends BasePolicyMakeCommand
     {
         $model = str_replace('/', '\\', $model);
 
-        $namespaceModel = $this->laravel->getNamespace()
-            . \trim(config('stubs.namespaces.model'), '\\') . '\\' . $model;
+        $modelsNamespace = ltrim(config('stubs.namespaces.model') . '\\', '\\');
+        $namespaceModel = $this->laravel->getNamespace() . $modelsNamespace . $model;
 
         if (Str::startsWith($model, '\\')) {
             $stub = str_replace('NamespacedDummyModel', trim($model, '\\'), $stub);

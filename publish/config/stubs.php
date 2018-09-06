@@ -13,7 +13,7 @@ return [
     |--------------------------------------------------------------------------
     | Default namespaces for the classes
     |--------------------------------------------------------------------------
-    | Warning! Root application namespaсe (like "App") should be skipped.
+    | Warning! Root application namespace (like "App") should be skipped.
     */
     'namespaces' => [
         'channel'      => '\Broadcasting',
@@ -25,7 +25,7 @@ return [
         'listener'     => '\Listeners',
         'mail'         => '\Mail',
         'middleware'   => '\Http\Middleware',
-        'model'        => '\Models',
+        'model'        => '',
         'notification' => '\Notifications',
         'policy'       => '\Policies',
         'provider'     => '\Providers',
