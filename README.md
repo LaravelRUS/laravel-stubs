@@ -7,8 +7,8 @@ The package gives you the opportunity to customize Artisan commands like `artisa
 Any location of the generated classes and with any content.
 
 
-## Installation for Laravel 5.5 / 5.6
-> *For older laravel versions see: [older installation](https://github.com/atehnix/laravel-stubs/tree/v2.0.0#installation)*
+## Installation
+> *For laravel v5.4 or older see: [older installation](https://github.com/atehnix/laravel-stubs/tree/v2.0.0#installation)*
 
 You can get library through [composer](https://getcomposer.org/)
 
