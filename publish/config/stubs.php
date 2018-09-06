@@ -27,6 +27,7 @@ return [
         'middleware'   => '\Http\Middleware',
         'model'        => '',
         'notification' => '\Notifications',
+        'observer'     => '\Observers',
         'policy'       => '\Policies',
         'provider'     => '\Providers',
         'request'      => '\Http\Requests',

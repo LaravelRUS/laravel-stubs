@@ -22,6 +22,7 @@ use ATehnix\LaravelStubs\Console\MailMakeCommand;
 use ATehnix\LaravelStubs\Console\MiddlewareMakeCommand;
 use ATehnix\LaravelStubs\Console\ModelMakeCommand;
 use ATehnix\LaravelStubs\Console\NotificationMakeCommand;
+use ATehnix\LaravelStubs\Console\ObserverMakeCommand;
 use ATehnix\LaravelStubs\Console\PolicyMakeCommand;
 use ATehnix\LaravelStubs\Console\ProviderMakeCommand;
 use ATehnix\LaravelStubs\Console\RequestMakeCommand;
@@ -185,6 +186,18 @@ class ArtisanServiceProvider extends BaseServiceProvider
     {
         $this->app->singleton('command.notification.make', function ($app) {
             return new NotificationMakeCommand($app['files']);
+        });
+    }
+
+    /**
+     * Register the command.
+     *
+     * @return void
+     */
+    protected function registerObserverMakeCommand()
+    {
+        $this->app->singleton('command.observer.make', function ($app) {
+            return new ObserverMakeCommand($app['files']);
         });
     }
 

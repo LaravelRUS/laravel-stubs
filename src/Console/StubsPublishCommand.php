@@ -66,6 +66,8 @@ class StubsPublishCommand extends Command
         'Illuminate/Foundation/Console/stubs/listener.stub',
         'Illuminate/Foundation/Console/stubs/mail.stub',
         'Illuminate/Foundation/Console/stubs/markdown-mail.stub',
+        'Illuminate/Foundation/Console/stubs/observer.stub',
+        'Illuminate/Foundation/Console/stubs/observer.plain.stub',
         'Illuminate/Foundation/Console/stubs/pivot.model.stub',
         'Illuminate/Foundation/Console/stubs/model.stub',
         'Illuminate/Foundation/Console/stubs/notification.stub',
