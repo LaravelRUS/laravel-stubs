@@ -90,6 +90,12 @@ class StubsPublishCommand extends Command
         'Illuminate/Routing/Console/stubs/middleware.stub',
     ];
 
+    protected $migrationStubs = [
+        'Illuminate/Database/Migrations/stubs/blank.stub'  => 'migration.blank.stub',
+        'Illuminate/Database/Migrations/stubs/create.stub' => 'migration.create.stub',
+        'Illuminate/Database/Migrations/stubs/update.stub' => 'migration.update.stub',
+    ];
+
     /**
      * Create a new command instance.
      *
@@ -116,6 +122,12 @@ class StubsPublishCommand extends Command
         foreach ($this->stubs as $stub) {
             $from = base_path($this->frameworkPath . $stub);
             $to = $path . '/' . basename($stub);
+            $publishedCount += (int)$this->publishFile($from, $to);
+        }
+
+        foreach ($this->migrationStubs as $stub => $name) {
+            $from = base_path($this->frameworkPath . $stub);
+            $to = $path . '/' . $name;
             $publishedCount += (int)$this->publishFile($from, $to);
         }
 
