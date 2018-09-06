@@ -90,6 +90,11 @@ class StubsPublishCommand extends Command
         'Illuminate/Routing/Console/stubs/middleware.stub',
     ];
 
+    /**
+     * Paths to migration stub files and a map of their names
+     *
+     * @var array
+     */
     protected $migrationStubs = [
         'Illuminate/Database/Migrations/stubs/blank.stub'  => 'migration.blank.stub',
         'Illuminate/Database/Migrations/stubs/create.stub' => 'migration.create.stub',

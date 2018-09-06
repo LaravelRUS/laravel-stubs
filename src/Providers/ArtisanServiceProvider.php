@@ -20,7 +20,6 @@ use ATehnix\LaravelStubs\Console\JobMakeCommand;
 use ATehnix\LaravelStubs\Console\ListenerMakeCommand;
 use ATehnix\LaravelStubs\Console\MailMakeCommand;
 use ATehnix\LaravelStubs\Console\MiddlewareMakeCommand;
-use ATehnix\LaravelStubs\Console\MigrationCreator;
 use ATehnix\LaravelStubs\Console\ModelMakeCommand;
 use ATehnix\LaravelStubs\Console\NotificationMakeCommand;
 use ATehnix\LaravelStubs\Console\ObserverMakeCommand;
@@ -32,6 +31,7 @@ use ATehnix\LaravelStubs\Console\RuleMakeCommand;
 use ATehnix\LaravelStubs\Console\SeederMakeCommand;
 use ATehnix\LaravelStubs\Console\StubsPublishCommand;
 use ATehnix\LaravelStubs\Console\TestMakeCommand;
+use ATehnix\LaravelStubs\Database\MigrationCreator;
 use Illuminate\Database\Console\Migrations\MigrateMakeCommand;
 use Illuminate\Foundation\Providers\ArtisanServiceProvider as BaseServiceProvider;
 
@@ -295,7 +295,7 @@ class ArtisanServiceProvider extends BaseServiceProvider
     protected function registerMigrateMakeCommand()
     {
         $this->app->singleton('command.migrate.make', function ($app) {
-            $creator  = app()->make(MigrationCreator::class);
+            $creator = $app[MigrationCreator::class];
             $composer = $app['composer'];
 
             return new MigrateMakeCommand($creator, $composer);
