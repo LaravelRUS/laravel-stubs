@@ -45,7 +45,7 @@ class ControllerMakeCommand extends BaseControllerMakeCommand
         if ($this->option('api') && is_null($stub)) {
             $stub = config('stubs.path') . '/controller.api.stub';
         } elseif ($this->option('api') && !is_null($stub) && !$this->option('invokable')) {
-            $stub = config('stubs.path') . str_replace('.stub', '.api.stub', $stub);
+            $stub = str_replace('.stub', '.api.stub', $stub);
         }
 
         $stub = $stub ?? config('stubs.path') . '/controller.plain.stub';
