@@ -14,6 +14,8 @@ use Illuminate\Foundation\Console\RequestMakeCommand as BaseRequestMakeCommand;
 
 class RequestMakeCommand extends BaseRequestMakeCommand
 {
+    use Modulable;
+
     /**
      * Get the stub file for the generator.
      *
@@ -34,6 +36,6 @@ class RequestMakeCommand extends BaseRequestMakeCommand
      */
     protected function getDefaultNamespace($rootNamespace)
     {
-        return $rootNamespace . config('stubs.namespaces.request');
+        return $rootNamespace . $this->getModuleNamespace() . config('stubs.namespaces.request');
     }
 }

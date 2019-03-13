@@ -16,6 +16,8 @@ use InvalidArgumentException;
 
 class ControllerMakeCommand extends BaseControllerMakeCommand
 {
+    use Modulable;
+
     /**
      * The Laravel application instance.
      *
@@ -61,7 +63,7 @@ class ControllerMakeCommand extends BaseControllerMakeCommand
      */
     protected function getDefaultNamespace($rootNamespace)
     {
-        return $rootNamespace . config('stubs.namespaces.controller');
+        return $rootNamespace . $this->getModuleNamespace() . config('stubs.namespaces.controller');
     }
 
     /**
@@ -77,7 +79,11 @@ class ControllerMakeCommand extends BaseControllerMakeCommand
         }
 
         $model = trim(str_replace('/', '\\', $model), '\\');
-        $namespace = $this->laravel->getNamespace() . ltrim(config('stubs.namespaces.model') . '\\', '\\');
+
+        $namespace =
+            trim($this->laravel->getNamespace(), '\\')
+            . $this->getModuleNamespace()
+            . config('stubs.namespaces.model') . '\\';
 
         if (!Str::startsWith($model, $namespace)) {
             $model = $namespace . $model;

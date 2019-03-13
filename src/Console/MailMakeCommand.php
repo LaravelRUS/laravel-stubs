@@ -14,6 +14,8 @@ use Illuminate\Foundation\Console\MailMakeCommand as BaseMailMakeCommand;
 
 class MailMakeCommand extends BaseMailMakeCommand
 {
+    use Modulable;
+
     /**
      * Get the stub file for the generator.
      *
@@ -38,6 +40,6 @@ class MailMakeCommand extends BaseMailMakeCommand
      */
     protected function getDefaultNamespace($rootNamespace)
     {
-        return $rootNamespace . config('stubs.namespaces.mail');
+        return $rootNamespace . $this->getModuleNamespace() . config('stubs.namespaces.mail');
     }
 }

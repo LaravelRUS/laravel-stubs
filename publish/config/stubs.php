@@ -35,4 +35,16 @@ return [
         'rule'         => '\Rules',
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | The name of the module that is being developed
+    |--------------------------------------------------------------------------
+    | When specified, the namespaces will be prefixed with
+    | the appropriate module name.
+    |
+    | For example, if the module is set to 'Blog', then the namespace
+    | for the controllers might look like: "App\Blog\Http\Controllers"
+    */
+    'module' => env('STUBS_MODULE', ''),
+
 ];

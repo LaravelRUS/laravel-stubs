@@ -14,6 +14,8 @@ use Illuminate\Foundation\Console\ModelMakeCommand as BaseModelMakeCommand;
 
 class ModelMakeCommand extends BaseModelMakeCommand
 {
+    use Modulable;
+
     /**
      * Get the stub file for the generator.
      *
@@ -38,6 +40,6 @@ class ModelMakeCommand extends BaseModelMakeCommand
      */
     protected function getDefaultNamespace($rootNamespace)
     {
-        return $rootNamespace . config('stubs.namespaces.model');
+        return $rootNamespace . $this->getModuleNamespace() . config('stubs.namespaces.model');
     }
 }

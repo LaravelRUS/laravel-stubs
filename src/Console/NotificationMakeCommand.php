@@ -14,6 +14,8 @@ use Illuminate\Foundation\Console\NotificationMakeCommand as BaseNotificationMak
 
 class NotificationMakeCommand extends BaseNotificationMakeCommand
 {
+    use Modulable;
+
     /**
      * Get the stub file for the generator.
      *
@@ -38,6 +40,6 @@ class NotificationMakeCommand extends BaseNotificationMakeCommand
      */
     protected function getDefaultNamespace($rootNamespace)
     {
-        return $rootNamespace . config('stubs.namespaces.notification');
+        return $rootNamespace . $this->getModuleNamespace() . config('stubs.namespaces.notification');
     }
 }

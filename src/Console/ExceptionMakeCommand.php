@@ -14,6 +14,8 @@ use Illuminate\Foundation\Console\ExceptionMakeCommand as BaseExceptionMakeComma
 
 class ExceptionMakeCommand extends BaseExceptionMakeCommand
 {
+    use Modulable;
+
     /**
      * Get the stub file for the generator.
      *
@@ -42,6 +44,6 @@ class ExceptionMakeCommand extends BaseExceptionMakeCommand
      */
     protected function getDefaultNamespace($rootNamespace)
     {
-        return $rootNamespace . config('stubs.namespaces.exception');
+        return $rootNamespace . $this->getModuleNamespace() . config('stubs.namespaces.exception');
     }
 }

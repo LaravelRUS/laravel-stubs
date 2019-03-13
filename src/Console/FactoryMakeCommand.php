@@ -15,6 +15,8 @@ use Illuminate\Support\Str;
 
 class FactoryMakeCommand extends BaseFactoryMakeCommand
 {
+    use Modulable;
+
     /**
      * The Laravel application instance.
      *
@@ -52,7 +54,11 @@ class FactoryMakeCommand extends BaseFactoryMakeCommand
     protected function parseModel($model)
     {
         $model = trim(str_replace('/', '\\', $model), '\\');
-        $namespace = $this->laravel->getNamespace() . ltrim(config('stubs.namespaces.model') . '\\', '\\');
+
+        $namespace =
+            trim($this->laravel->getNamespace(), '\\')
+            . $this->getModuleNamespace()
+            . config('stubs.namespaces.model') . '\\';
 
         if (!Str::startsWith($model, $namespace)) {
             $model = $namespace . $model;

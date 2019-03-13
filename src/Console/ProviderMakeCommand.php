@@ -14,6 +14,8 @@ use Illuminate\Foundation\Console\ProviderMakeCommand as BaseProviderMakeCommand
 
 class ProviderMakeCommand extends BaseProviderMakeCommand
 {
+    use Modulable;
+
     /**
      * Get the stub file for the generator.
      *
@@ -34,6 +36,6 @@ class ProviderMakeCommand extends BaseProviderMakeCommand
      */
     protected function getDefaultNamespace($rootNamespace)
     {
-        return $rootNamespace . config('stubs.namespaces.provider');
+        return $rootNamespace . $this->getModuleNamespace() . config('stubs.namespaces.provider');
     }
 }

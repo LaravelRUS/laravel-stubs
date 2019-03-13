@@ -14,6 +14,8 @@ use Illuminate\Foundation\Console\ChannelMakeCommand as BaseChannelMakeCommand;
 
 class ChannelMakeCommand extends BaseChannelMakeCommand
 {
+    use Modulable;
+
     /**
      * Get the stub file for the generator.
      *
@@ -34,6 +36,6 @@ class ChannelMakeCommand extends BaseChannelMakeCommand
      */
     protected function getDefaultNamespace($rootNamespace)
     {
-        return $rootNamespace . config('stubs.namespaces.channel');
+        return $rootNamespace . $this->getModuleNamespace() . config('stubs.namespaces.channel');
     }
 }

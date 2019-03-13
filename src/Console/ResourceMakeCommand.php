@@ -14,6 +14,8 @@ use Illuminate\Foundation\Console\ResourceMakeCommand as BaseResourceMakeCommand
 
 class ResourceMakeCommand extends BaseResourceMakeCommand
 {
+    use Modulable;
+
     /**
      * Get the stub file for the generator.
      *
@@ -38,6 +40,6 @@ class ResourceMakeCommand extends BaseResourceMakeCommand
      */
     protected function getDefaultNamespace($rootNamespace)
     {
-        return $rootNamespace . config('stubs.namespaces.resource');
+        return $rootNamespace . $this->getModuleNamespace() . config('stubs.namespaces.resource');
     }
 }

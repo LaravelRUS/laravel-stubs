@@ -14,6 +14,8 @@ use Illuminate\Foundation\Console\ConsoleMakeCommand as BaseConsoleMakeCommand;
 
 class ConsoleMakeCommand extends BaseConsoleMakeCommand
 {
+    use Modulable;
+
     /**
      * Get the stub file for the generator.
      *
@@ -34,6 +36,6 @@ class ConsoleMakeCommand extends BaseConsoleMakeCommand
      */
     protected function getDefaultNamespace($rootNamespace)
     {
-        return $rootNamespace . config('stubs.namespaces.command');
+        return $rootNamespace . $this->getModuleNamespace() . config('stubs.namespaces.command');
     }
 }

@@ -15,6 +15,8 @@ use Illuminate\Support\Str;
 
 class PolicyMakeCommand extends BasePolicyMakeCommand
 {
+    use Modulable;
+
     /**
      * The Laravel application instance.
      *
@@ -46,7 +48,7 @@ class PolicyMakeCommand extends BasePolicyMakeCommand
      */
     protected function getDefaultNamespace($rootNamespace)
     {
-        return $rootNamespace . config('stubs.namespaces.policy');
+        return $rootNamespace . $this->getModuleNamespace() . config('stubs.namespaces.policy');
     }
 
     /**
@@ -60,8 +62,11 @@ class PolicyMakeCommand extends BasePolicyMakeCommand
     {
         $model = str_replace('/', '\\', $model);
 
-        $modelsNamespace = ltrim(config('stubs.namespaces.model') . '\\', '\\');
-        $namespaceModel = $this->laravel->getNamespace() . $modelsNamespace . $model;
+        $namespaceModel =
+            trim($this->laravel->getNamespace(), '\\')
+            . $this->getModuleNamespace()
+            . config('stubs.namespaces.model') . '\\'
+            . $model;
 
         if (Str::startsWith($model, '\\')) {
             $stub = str_replace('NamespacedDummyModel', trim($model, '\\'), $stub);

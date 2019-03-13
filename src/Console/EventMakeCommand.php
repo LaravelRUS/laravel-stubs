@@ -14,6 +14,8 @@ use Illuminate\Foundation\Console\EventMakeCommand as BaseEventMakeCommand;
 
 class EventMakeCommand extends BaseEventMakeCommand
 {
+    use Modulable;
+
     /**
      * Get the stub file for the generator.
      *
@@ -34,6 +36,6 @@ class EventMakeCommand extends BaseEventMakeCommand
      */
     protected function getDefaultNamespace($rootNamespace)
     {
-        return $rootNamespace . config('stubs.namespaces.event');
+        return $rootNamespace . $this->getModuleNamespace() . config('stubs.namespaces.event');
     }
 }

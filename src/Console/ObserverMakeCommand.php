@@ -15,6 +15,8 @@ use Illuminate\Support\Str;
 
 class ObserverMakeCommand extends BaseObserverMakeCommand
 {
+    use Modulable;
+
     /**
      * Get the stub file for the generator.
      *
@@ -39,7 +41,7 @@ class ObserverMakeCommand extends BaseObserverMakeCommand
      */
     protected function getDefaultNamespace($rootNamespace)
     {
-        return $rootNamespace . config('stubs.namespaces.observer');
+        return $rootNamespace . $this->getModuleNamespace() . config('stubs.namespaces.observer');
     }
 
     /**
@@ -53,8 +55,11 @@ class ObserverMakeCommand extends BaseObserverMakeCommand
     {
         $model = str_replace('/', '\\', $model);
 
-        $modelsNamespace = ltrim(config('stubs.namespaces.model') . '\\', '\\');
-        $namespaceModel = $this->laravel->getNamespace() . $modelsNamespace . $model;
+        $namespaceModel =
+            trim($this->laravel->getNamespace(), '\\')
+            . $this->getModuleNamespace()
+            . config('stubs.namespaces.model') . '\\'
+            . $model;
 
         if (Str::startsWith($model, '\\')) {
             $stub = str_replace('NamespacedDummyModel', trim($model, '\\'), $stub);

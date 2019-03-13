@@ -14,6 +14,8 @@ use Illuminate\Routing\Console\MiddlewareMakeCommand as BaseMiddlewareMakeComman
 
 class MiddlewareMakeCommand extends BaseMiddlewareMakeCommand
 {
+    use Modulable;
+
     /**
      * Get the stub file for the generator.
      *
@@ -34,6 +36,6 @@ class MiddlewareMakeCommand extends BaseMiddlewareMakeCommand
      */
     protected function getDefaultNamespace($rootNamespace)
     {
-        return $rootNamespace . config('stubs.namespaces.middleware');
+        return $rootNamespace . $this->getModuleNamespace() . config('stubs.namespaces.middleware');
     }
 }

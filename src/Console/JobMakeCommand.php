@@ -14,6 +14,8 @@ use Illuminate\Foundation\Console\JobMakeCommand as BaseJobMakeCommand;
 
 class JobMakeCommand extends BaseJobMakeCommand
 {
+    use Modulable;
+
     /**
      * Get the stub file for the generator.
      *
@@ -38,6 +40,6 @@ class JobMakeCommand extends BaseJobMakeCommand
      */
     protected function getDefaultNamespace($rootNamespace)
     {
-        return $rootNamespace . config('stubs.namespaces.job');
+        return $rootNamespace . $this->getModuleNamespace() . config('stubs.namespaces.job');
     }
 }

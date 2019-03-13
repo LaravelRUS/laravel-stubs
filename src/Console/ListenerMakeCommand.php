@@ -15,6 +15,8 @@ use Illuminate\Support\Str;
 
 class ListenerMakeCommand extends BaseListenerMakeCommand
 {
+    use Modulable;
+
     /**
      * The Laravel application instance.
      *
@@ -30,7 +32,7 @@ class ListenerMakeCommand extends BaseListenerMakeCommand
      */
     protected function getDefaultNamespace($rootNamespace)
     {
-        return $rootNamespace . config('stubs.namespaces.listener');
+        return $rootNamespace . $this->getModuleNamespace() . config('stubs.namespaces.listener');
     }
 
     /**
@@ -73,13 +75,17 @@ class ListenerMakeCommand extends BaseListenerMakeCommand
     {
         $event = $this->option('event');
 
+        $namespace =
+            trim($this->laravel->getNamespace(), '\\')
+            . $this->getModuleNamespace()
+            . config('stubs.namespaces.event') . '\\';
+
         if (!Str::startsWith($event, [
-            $this->laravel->getNamespace(),
+            $namespace,
             'Illuminate',
             '\\',
         ])) {
-            $eventNamespace = ltrim(config('stubs.namespaces.event'), '\\') . '\\';
-            $event = $this->laravel->getNamespace() . $eventNamespace . $event;
+            $event = $namespace . $event;
         }
 
         return $event;

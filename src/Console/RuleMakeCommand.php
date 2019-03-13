@@ -14,6 +14,8 @@ use Illuminate\Foundation\Console\RuleMakeCommand as BaseRuleMakeCommand;
 
 class RuleMakeCommand extends BaseRuleMakeCommand
 {
+    use Modulable;
+
     /**
      * Get the stub file for the generator.
      *
@@ -34,6 +36,6 @@ class RuleMakeCommand extends BaseRuleMakeCommand
      */
     protected function getDefaultNamespace($rootNamespace)
     {
-        return $rootNamespace . config('stubs.namespaces.rule');
+        return $rootNamespace . $this->getModuleNamespace() . config('stubs.namespaces.rule');
     }
 }
