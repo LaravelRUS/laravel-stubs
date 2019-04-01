@@ -66,12 +66,12 @@ class StubsPublishCommand extends Command
         'Illuminate/Foundation/Console/stubs/listener.stub',
         'Illuminate/Foundation/Console/stubs/mail.stub',
         'Illuminate/Foundation/Console/stubs/markdown-mail.stub',
+        'Illuminate/Foundation/Console/stubs/markdown-notification.stub',
+        'Illuminate/Foundation/Console/stubs/model.stub',
+        'Illuminate/Foundation/Console/stubs/notification.stub',
         'Illuminate/Foundation/Console/stubs/observer.stub',
         'Illuminate/Foundation/Console/stubs/observer.plain.stub',
         'Illuminate/Foundation/Console/stubs/pivot.model.stub',
-        'Illuminate/Foundation/Console/stubs/model.stub',
-        'Illuminate/Foundation/Console/stubs/notification.stub',
-        'Illuminate/Foundation/Console/stubs/markdown-notification.stub',
         'Illuminate/Foundation/Console/stubs/policy.plain.stub',
         'Illuminate/Foundation/Console/stubs/policy.stub',
         'Illuminate/Foundation/Console/stubs/provider.stub',
@@ -83,9 +83,9 @@ class StubsPublishCommand extends Command
         'Illuminate/Foundation/Console/stubs/unit-test.stub',
         'Illuminate/Routing/Console/stubs/controller.api.stub',
         'Illuminate/Routing/Console/stubs/controller.invokable.stub',
+        'Illuminate/Routing/Console/stubs/controller.model.stub',
         'Illuminate/Routing/Console/stubs/controller.nested.stub',
         'Illuminate/Routing/Console/stubs/controller.plain.stub',
-        'Illuminate/Routing/Console/stubs/controller.model.stub',
         'Illuminate/Routing/Console/stubs/controller.stub',
         'Illuminate/Routing/Console/stubs/middleware.stub',
     ];
@@ -96,7 +96,7 @@ class StubsPublishCommand extends Command
      * @var array
      */
     protected $migrationStubs = [
-        'Illuminate/Database/Migrations/stubs/blank.stub'  => 'migration.blank.stub',
+        'Illuminate/Database/Migrations/stubs/blank.stub' => 'migration.blank.stub',
         'Illuminate/Database/Migrations/stubs/create.stub' => 'migration.create.stub',
         'Illuminate/Database/Migrations/stubs/update.stub' => 'migration.update.stub',
     ];
@@ -104,7 +104,7 @@ class StubsPublishCommand extends Command
     /**
      * Create a new command instance.
      *
-     * @param  \Illuminate\Filesystem\Filesystem $files
+     * @param \Illuminate\Filesystem\Filesystem $files
      */
     public function __construct(Filesystem $files)
     {
@@ -144,7 +144,7 @@ class StubsPublishCommand extends Command
     /**
      * Create the directory to house the published files if needed.
      *
-     * @param  string $directory
+     * @param string $directory
      * @return void
      */
     protected function createDirectory($directory)
@@ -157,8 +157,8 @@ class StubsPublishCommand extends Command
     /**
      * Publish the file to the given path.
      *
-     * @param  string $from
-     * @param  string $to
+     * @param string $from
+     * @param string $to
      * @return bool
      */
     protected function publishFile($from, $to)
