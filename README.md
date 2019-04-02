@@ -32,6 +32,11 @@ Done!
 ### Configure paths for generated classes
 To change the paths of saving the generated classes, you need to configure their namespaces in a configuration file `config/stubs.php`.
 
+### Modular development.
+If you have a large project, you may want to divide it into modules as subdirectories in the "app" directory.
+
+To make classes inside the module you are developing, you can specify the name of the module in the `STUBS_MODULE` environment variable.
+
 ### Publish stub files for edit
 ```
 php artisan stubs:publish
