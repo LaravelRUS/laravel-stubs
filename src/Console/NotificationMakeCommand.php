@@ -42,4 +42,26 @@ class NotificationMakeCommand extends BaseNotificationMakeCommand
     {
         return $rootNamespace . $this->getModuleNamespace() . config('stubs.namespaces.notification');
     }
+
+    /**
+     * Write the Markdown template for the mailable.
+     *
+     * @return void
+     */
+    protected function writeMarkdownTemplate()
+    {
+        $path = resource_path('views/' . str_replace('.', '/', $this->option('markdown'))) . '.blade.php';
+
+        if (!$this->files->isDirectory(dirname($path))) {
+            $this->files->makeDirectory(dirname($path), 0755, true);
+        }
+
+        $stub = config('stubs.path') . '/markdown.stub';
+
+        if (file_exists($stub)) {
+            $this->files->put($path, file_get_contents($stub));
+        } else {
+            parent::writeMarkdownTemplate();
+        }
+    }
 }
