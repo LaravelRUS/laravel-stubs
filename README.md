@@ -9,6 +9,13 @@ The package gives you the opportunity to customize Artisan commands like `artisa
 Any location of the generated classes and with any content.
 
 
+## Only Laravel 6 or less is supported.
+
+**The laravel-stubs functionality (partially) is [now added](https://laravel.com/docs/master/artisan#stub-customization) as part of the Laravel framework (v7).**
+
+**The laravel-stubs package remains available as an implementation of this functionality for previous versions of the framework, but will not be updated for new versions of Laravel.**
+
+
 ## Installation
 > *For laravel v5.4 or older see: [older installation](https://github.com/atehnix/laravel-stubs/tree/v2.0.0#installation)*
 
